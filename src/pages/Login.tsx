@@ -3,6 +3,7 @@ import { UserContext } from "../context/user";
 import { ErrorMessage } from "../components/ui";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../utils";
+import MemoryImage from '../assets/images/concentration.png'
 
 export const Login: FC = () => {
   const navigate = useNavigate();
@@ -36,15 +37,18 @@ export const Login: FC = () => {
       <div className="g-6 p-8 flex h-full items-center justify-center lg:justify-between">
         <div className="shrink-1 mb-12 grow-0 basis-auto hidden  md:mb-0 sm:hidden md:block md:w-6/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
           <img
-            src="https://lh3.ggpht.com/L91qxOnnyw0-2W7Oa-opLyz7V1zSCNM16W3AyCz26mJnqqBtxbo11pEDXQq6jtPxX0Q"
+            src={MemoryImage}
             className="w-800"
             alt="Sample image"
           />
         </div>
 
         <div className="md:mb-0 md:w-6/12 lg:w-6/12 xl:w-6/12">
-          <div className="font-mono mb-12 text-4xl text-center uppercase font-semibold text-black">
+          <div className="font-mono mb-12 text-4xl hidden sm:hidden md:block text-center uppercase font-semibold text-black">
             Try to get the better score and fun!
+          </div>
+          <div className="font-mono mb-12 text-4xl sm:block md:hidden text-center uppercase font-semibold text-black">
+            Memory Game: Try to get the better score and fun!
           </div>
           <div className="bg-cyan-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
             <div className="mb-4">

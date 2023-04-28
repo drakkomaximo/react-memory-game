@@ -14,7 +14,7 @@ export const FloatButton = () => {
   return (
     <button
       type="button"
-      className="absolute z-10 right-6 bottom-6 mt-1 ml- text-lg font-semibold px-4 py-4
+      className="fixed z-10 right-6 bottom-6 mt-1 ml- text-lg font-semibold px-4 py-4
             bg-yellow-500 w-20 text-black rounded-lg block shadow-xl hover:text-white hover:bg-red-500"
       onClick={resetValue}
     >
