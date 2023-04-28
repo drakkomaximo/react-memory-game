@@ -9,14 +9,10 @@ This is a simple react memory game.
 2) In de coomand center or terminal use: Git Clone [repository url]
 3) Excecute the next command for recreate node_modules folder
 ```bash
-npm i
-# or
 yarn
 ```
 4) Use the next command to start the game
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 5) Start to fun!
