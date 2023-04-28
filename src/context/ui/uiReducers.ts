@@ -10,9 +10,14 @@ type UserActionType =
       type: "[UI] Old Selected Card";
       payload: CardSelectedType[];
     }
+  | {
+      type: "[UI] Old Show Modal";
+      payload: boolean;
+    }
   | { type: "[UI] Update Card Selected"; payload: string }
   | { type: "[UI] Set Animals Images"; payload: DisorderAnimalsType[] }
-  | { type: "[UI] Clear Cards Selected" };
+  | { type: "[UI] Clear Cards Selected" }
+  | { type: "[UI] Toogle Success Modal" };
 
 export const uiReducers = (state: UiState, action: UserActionType): UiState => {
   switch (action.type) {
@@ -35,6 +40,16 @@ export const uiReducers = (state: UiState, action: UserActionType): UiState => {
       return {
         ...state,
         images: action.payload,
+      };
+    case "[UI] Toogle Success Modal":
+      return {
+        ...state,
+        showModal: !state.showModal,
+      };
+    case "[UI] Old Show Modal":
+      return {
+        ...state,
+        showModal: action.payload,
       };
     case "[UI] Update Card Selected":
       return {

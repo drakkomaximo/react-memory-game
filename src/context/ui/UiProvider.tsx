@@ -5,6 +5,7 @@ import {
   CardsSelectedType,
   DisorderAnimalsType,
   ImageType,
+  ShowModalType,
 } from "../../interfaces";
 
 export interface UiState {
@@ -13,11 +14,13 @@ export interface UiState {
     imageId: string;
   }[];
   images: DisorderAnimalsType[];
+  showModal: boolean;
 }
 
 const UI_INITIAL_STATE: UiState = {
   cardsSelected: [],
   images: [],
+  showModal: false,
 };
 
 export const UiProvider: FC<{ children: JSX.Element }> = ({ children }) => {
@@ -40,6 +43,13 @@ export const UiProvider: FC<{ children: JSX.Element }> = ({ children }) => {
     dispatch({ type: "[UI] Set Animals Images", payload: images });
   };
 
+  const toggleModal = () => {
+    dispatch({
+      type: "[UI] Toogle Success Modal",
+    });
+    localStorage.setItem('showModal', JSON.stringify(!state.showModal))
+  };
+
   const searchLastImagesSection = () => {
     const oldImageSection = localStorage.getItem(ImageType);
     if (oldImageSection) {
@@ -58,6 +68,15 @@ export const UiProvider: FC<{ children: JSX.Element }> = ({ children }) => {
       });
     }
   };
+  const searchLastShowModalSection = () => {
+    const oldShowModalSection = localStorage.getItem(ShowModalType);
+    if (oldShowModalSection) {
+      dispatch({
+        type: "[UI] Old Show Modal",
+        payload: !!JSON.parse(oldShowModalSection),
+      });
+    }
+  };
 
   useEffect(() => {
     searchLastImagesSection();
@@ -65,6 +84,10 @@ export const UiProvider: FC<{ children: JSX.Element }> = ({ children }) => {
 
   useEffect(() => {
     searchLastCardsSelectedSection();
+  }, []);
+
+  useEffect(() => {
+    searchLastShowModalSection();
   }, []);
 
   useEffect(() => {
@@ -87,6 +110,7 @@ export const UiProvider: FC<{ children: JSX.Element }> = ({ children }) => {
         getAnimalsImages,
         selectCard,
         clearCardsSelected,
+        toggleModal,
       }}
     >
       {children}
